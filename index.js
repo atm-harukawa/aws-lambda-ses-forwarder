@@ -242,10 +242,10 @@ exports.processMessage = function(data) {
     function(match, from) {
       var fromText;
       if (data.config.fromEmail) {
-        fromText = 'From: ' + from.replace(/<(.*)>/, '').trim() +
-        ' <' + data.config.fromEmail + '>';
+        fromText = 'From: "' + from.replace(/"/g, '').replace(/<(.*)>/, '').trim() +
+        '" <' + data.config.fromEmail + '>';
       } else {
-        fromText = 'From: "' + from.replace('<', 'at ').replace('>', '') +
+        fromText = 'From: "' + from.replace(/"/g, '').replace('<', 'at ').replace('>', '') +
         '" <' + data.originalRecipient + '>';
       }
       return fromText;
