@@ -248,6 +248,10 @@ exports.processMessage = function(data) {
         fromText = 'From: "' + from.replace(/"/g, '').replace('<', 'at ').replace('>', '') +
         '" <' + data.originalRecipient + '>';
       }
+      data.log({
+        level: "info",
+        message: "From address of: " + fromText
+      });
       return fromText;
     });
 
